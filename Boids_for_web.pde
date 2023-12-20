@@ -8,7 +8,7 @@ BoidManager bm;
 
 void setup()
 {
-  boidSprite = loadImage("Boid5.png");
+  boidSprite = loadImage("Boid.png");
   boidSprite.resize(9,16);
   size(700, 700);
   bm = new BoidManager(numberOfBoids, personalSpace, seperationSpace, boidSprite);

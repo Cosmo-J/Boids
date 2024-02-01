@@ -69,35 +69,21 @@ class BoidManager //<>//
           boid.AddFriends(nearBoid);
         }
 
-        if ( PVector.dist(boid.position, nearBoid.position) > personalSpace ) //remove friends
+        if ( PVector.dist(boid.position, nearBoid.position) > personalSpace || InBlindSpot(boid, nearBoid)) //remove friends
         {
           boid.RemoveFriends(nearBoid);
         }
-        //if (InBlindSpot(boid, nearBoid))
-        //{
-         // boid.RemoveFriends(nearBoid);
-        //}
       }
     }
   }
 
 
   private boolean MouseSeperation(PVector boidPos)
-  {
-    
+  {    
     float effectRadius = 100;
-    
-    //stroke(0);
-    //strokeWeight(0);
-    //fill(10,50,180,8);
-    //circle(mouseX,mouseY,effectRadius);
-    
     PVector mousePos = new PVector(mouseX,mouseY);
     return (PVector.dist(boidPos,mousePos) < effectRadius);
   }
-
-
-
 
   float tollerance = 135; //blind spot in degrees
   private boolean InBlindSpot(BoidObject b1, BoidObject b2) //checks if b2 is in b1s blind spot

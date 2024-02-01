@@ -45,7 +45,6 @@ class BoidObject
     boundingBox();
   }
 
-  float alignmentMod = 0.02;
   private void Alignment()
   {
     PVector avgVel = new PVector(0,0);
@@ -65,7 +64,6 @@ class BoidObject
     velocity.setMag(0.5 + (exp(-closenessMod * 0.001)));
   }
 
-  float seperationMod = 0.001;
   public void Seperation(BoidObject friend) //need for seperation is detected in the boid manager to ensure all the boids are being check if they're too close (not just in friends)
   {
     PVector VecTo = Vec2Points(position, friend.position());
@@ -84,7 +82,6 @@ class BoidObject
     RotateTowards(VecTo,radians(7));   
   }
 
-  float cohesionMod = 0.01;//used to set the magnitude of the angle change vector, hence how much influence it has
   private void Cohesion()
   {
     float avgX = 0;
@@ -118,15 +115,12 @@ class BoidObject
     float currentAngle = velocity.heading();
     float targetAngle = target.heading();
 
-    // Calculate the angle difference and adjust for wrapping
     float angleDiff = targetAngle - currentAngle;
     angleDiff += (angleDiff > Math.PI) ? -2 * Math.PI : (angleDiff < -Math.PI) ? 2 * Math.PI : 0;
 
-    // Limit the rotation amount
     float rotation = Math.min(Math.abs(angleDiff), rotRateRadians);
     rotation = angleDiff < 0 ? -rotation : rotation;
 
-    // Apply the rotation
     velocity.rotate(rotation);
   }
 
@@ -166,7 +160,6 @@ class BoidObject
       position = new PVector(position.x, height - position.y);
     }
   }
-  //getter methods//
 
   public boolean CanFriend()
   {

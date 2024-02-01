@@ -1,4 +1,3 @@
-//fix Cohesion, not sure average position is being found correctly
 PImage boidSprite;
 int numberOfBoids = 200;
 float personalSpace = 80;
@@ -27,22 +26,11 @@ void mouseReleased()
 }
 
 
-//nice blue : RGB (4,30,100)
 void draw()
 {
   background(4, 10, 50);
-  //background(0);
-  //
   bm.Update();
-  //
   DrawBorders();
-}
-
-void DrawTank() //where the boids swim
-{
-  strokeWeight(0);
-  fill(4, 30, 100);
-  square(25, 0, 600);
 }
 
 void DrawBorders()
